@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import DashBoard from './Dashboard/index';
+import { nanoid } from 'nanoid';
 
+const DATA_TASK = [
+  {
+    id: `todo-${nanoid()}`,
+    name: 'dormir',
+    completed: false,
+    menu: [{ obs: 'cesar' }],
+  },
+  {
+    id: `todo-${nanoid()}`,
+    name: 'estudar',
+    completed: false,
+    menu: [{ obs: '' }],
+  },
+  {
+    id: `todo-${nanoid()}`,
+    name: 'jantar',
+    completed: false,
+    menu: [{ obs: '' }],
+  },
+];
+// eslint-disable-next-line require-jsdoc
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <DashBoard task={DATA_TASK} />
+    </>
   );
 }
 
