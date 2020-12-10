@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Container, AddNewTask } from './styles';
+import { Container, AddNewTask, SideMenu } from './styles';
 import TaskList from '../components/TaskList';
 import { nanoid } from 'nanoid';
-import Button from '../components/Button';
+// import Button from '../components/Button/index';
 
 // eslint-disable-next-line require-jsdoc
 function Dashboard({ task }) {
@@ -10,9 +10,13 @@ function Dashboard({ task }) {
   const [taskName, setTaskName] = useState(' ');
   const [openMenu, setOpenMenu] = useState(false);
   const [comments, setComments] = useState(' ');
+  const [id, setId] = useState(' ');
 
-  const deleteTask = (id) => {
-    console.log(id);
+  const deleteTask = () => {
+    const updateTaskList = taskList.filter((task) => task.id !== id);
+    console.log(updateTaskList);
+    setTaskList(updateTaskList);
+    setOpenMenu(false);
   };
 
   const openMenuTask = (id) => {
@@ -20,6 +24,7 @@ function Dashboard({ task }) {
     const [obs] = menuTask.menu;
     setComments(obs.obs);
     setOpenMenu(true);
+    setId(id);
   };
 
   const captureNewTask = (e) => {
@@ -41,17 +46,15 @@ function Dashboard({ task }) {
     const updateTaskList = taskList.find((task) => task.id === id);
     updateTaskList.name = name;
     const refactoredList = taskList.filter((task) => task.id !== id);
-    setTaskList([updateTaskList, ...refactoredList]);
-    deleteTask(id);
+    setTaskList([...refactoredList, updateTaskList]);
   };
-
+  console.log(taskList);
   return (
     <Container>
-      <h1>Dashboard</h1>
-      <h3>
-        {`Você tem ${taskList.length} 
-          ${taskList.length === 1 ? 'tarefa' : 'tarefas'} hoje.`}
-      </h3>
+      {/* lembrar de colocar este código no header */}
+      {/* `Você tem ${taskList.length} 
+          ${taskList.length === 1 ? 'tarefa' : 'tarefas'} hoje.`*/}
+
       <AddNewTask onSubmit={captureNewTask}>
         <input
           type="text"
@@ -59,22 +62,27 @@ function Dashboard({ task }) {
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
         />
-        <Button type="submit">+</Button>
+        <button type="submit">
+          <img src="https://img.icons8.com/fluent-systems-regular/24/000000/plus-math.png" />
+        </button>
+        {/* decidi não deixar como button default, pois seu estilo é único na tela. */}
       </AddNewTask>
 
-      {openMenu && (
-        <div>
-          {comments}
-          <button
-            /* não seu porquê o component Button não funcionou aqui */
-            onClick={() => {
-              setOpenMenu(false);
-            }}
-          >
-            fechar
-          </button>
-        </div>
-      )}
+      <SideMenu visible={openMenu}>
+        {comments}
+        <button
+          type="button"
+          /* não seu porquê o component Button não funcionou aqui */
+          onClick={() => {
+            setOpenMenu(false);
+          }}
+        >
+          fechar
+        </button>
+        <button onClick={deleteTask} type="button">
+          deletar tarefa
+        </button>
+      </SideMenu>
 
       <ul>
         {taskList.map((tk) => (
@@ -85,6 +93,7 @@ function Dashboard({ task }) {
             defaultChecked={tk.completed}
             name={tk.name}
             captureTask={captureTask}
+            deleteTask={deleteTask}
           />
         ))}
       </ul>

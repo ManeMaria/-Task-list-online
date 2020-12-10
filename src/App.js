@@ -1,6 +1,7 @@
 import React from 'react';
-import DashBoard from './Dashboard/index';
 import { nanoid } from 'nanoid';
+import DashBoard from './Dashboard/index';
+import GlobalStyles from './Styles/Global';
 
 const DATA_TASK = [
   {
@@ -26,6 +27,7 @@ const DATA_TASK = [
 function App() {
   return (
     <>
+      <GlobalStyles />
       <DashBoard task={DATA_TASK} />
     </>
   );
