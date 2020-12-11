@@ -12,6 +12,20 @@ function Dashboard({ task }) {
   const [comments, setComments] = useState(' ');
   const [id, setId] = useState(' ');
 
+  const toggleTaskCompletedAndDelete = (id) => {
+    const taskUpdatedToComplete = taskList.map((task) => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+
+    const deleteCompleteTask = taskUpdatedToComplete.filter((task) => {
+      return !task.completed;
+    });
+    setTaskList(deleteCompleteTask);
+  };
+
   const deleteTask = () => {
     const updateTaskList = taskList.filter((task) => task.id !== id);
     console.log(updateTaskList);
@@ -48,7 +62,7 @@ function Dashboard({ task }) {
     const refactoredList = taskList.filter((task) => task.id !== id);
     setTaskList([...refactoredList, updateTaskList]);
   };
-  console.log(taskList);
+
   return (
     <Container>
       {/* lembrar de colocar este código no header */}
@@ -69,7 +83,7 @@ function Dashboard({ task }) {
       </AddNewTask>
 
       <SideMenu visible={openMenu}>
-        {comments}
+        <span>{comments}</span>
         <button
           type="button"
           /* não seu porquê o component Button não funcionou aqui */
@@ -93,7 +107,7 @@ function Dashboard({ task }) {
             defaultChecked={tk.completed}
             name={tk.name}
             captureTask={captureTask}
-            deleteTask={deleteTask}
+            toggleTaskCompletedAndDelete={toggleTaskCompletedAndDelete}
           />
         ))}
       </ul>
