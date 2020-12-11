@@ -86,7 +86,7 @@ export const AddNewTask = styled.form`
     button {
       top: 8%;
       left: 85%;
-      padding: 2% 4%;
+      padding: 0.5% 4%;
     }
   }
 
@@ -117,7 +117,6 @@ export const AddNewTask = styled.form`
       font-size: 20px;
     }
     button {
-      //atualizar para telas diferentes, pois está estourando
       background: none;
       position: absolute;
       top: 15%;
@@ -129,6 +128,9 @@ export const AddNewTask = styled.form`
   }
 `;
 export const SideMenu = styled.div`
+  /*
+  * Pensar numa solução para clicar fora do menu e fechá-lo.
+   */
   z-index: 1;
   position: absolute;
   background: #fff;
@@ -138,16 +140,50 @@ export const SideMenu = styled.div`
   transition: all 0.3s;
   transform: translateX(-100%);
 
-  button {
+  .close-menu {
     display: ${(props) => (props.visible ? 'block' : 'none')};
+    @media (min-width: 320px) {
+      position: absolute;
+      top: 2%;
+      left: 2%;
+    }
+  }
+  .delete-task {
+    display: ${(props) => (props.visible ? 'block' : 'none')};
+    @media (min-width: 320px) {
+      position: absolute;
+      top: 80%;
+      left: 2%;
+    }
+    @media (min-width: 900px) {
+    }
+    @media (min-width: 1200px) {
+    }
   }
   span {
     display: ${(props) => (props.visible ? 'block' : 'none')};
   }
   @media (min-width: 320px) {
+    width: ${(props) => (props.visible ? '80%' : '0')};
+    box-shadow: ${(props) =>
+      props.visible ? '0 0px 3px 15px rgba(0, 0, 0, 0.3)' : 'none'};
+
+    span {
+      margin-top: 20%;
+      width: 100%;
+      height: 10%;
+      border: none;
+      border-top: 1px solid rgba(3, 3, 3, 0.3);
+      border-bottom: 1px solid rgba(3, 3, 3, 0.3);
+    }
   }
   @media (min-width: 900px) {
+    width: ${(props) => (props.visible ? '20%' : '0')};
+    box-shadow: ${(props) =>
+      props.visible ? '0 0px 3px 15px rgba(0, 0, 0, 0.3)' : 'none'};
   }
   @media (min-width: 1200px) {
+    width: ${(props) => (props.visible ? '20%' : '0')};
+    box-shadow: none;
   }
 `;

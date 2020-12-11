@@ -73,8 +73,6 @@ export const Content = styled.li`
       font-size: 1.3em;
     }
   }
-  @media (min-width: 900px) {
-  }
   @media (min-width: 1200px) {
     font-size: 1em;
   }

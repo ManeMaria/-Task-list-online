@@ -83,8 +83,8 @@ function Dashboard({ task }) {
       </AddNewTask>
 
       <SideMenu visible={openMenu}>
-        <span>{comments}</span>
         <button
+          className="close-menu"
           type="button"
           /* não seu porquê o component Button não funcionou aqui */
           onClick={() => {
@@ -93,9 +93,12 @@ function Dashboard({ task }) {
         >
           fechar
         </button>
-        <button onClick={deleteTask} type="button">
+        <button className="delete-task" onClick={deleteTask} type="button">
           deletar tarefa
         </button>
+        <span>
+          <p>{comments}</p>
+        </span>
       </SideMenu>
 
       <ul>
