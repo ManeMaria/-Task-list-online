@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  background: #333;
+  background: #fff;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   ul {
     width: 70%;
     height: 55%;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.5);
     margin-left: 20%;
     margin-top: 3%;
     padding-left: 5%;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     ul {
       width: 85%;
       height: 60%;
-      background: #fff;
+      background: rgba(0, 0, 0, 0.3);
       margin-left: 0;
       margin-top: 10%;
       padding-left: 0;
@@ -35,7 +35,7 @@ export const Container = styled.div`
     ul {
       width: 80%;
       height: 55%;
-      background: #fff;
+      background: rgba(0, 0, 0, 0.3);
       margin-left: 0%;
       margin-top: 3%;
       padding-left: 0;
@@ -45,11 +45,49 @@ export const Container = styled.div`
     ul {
       width: 70%;
       height: 55%;
-      background: #fff;
+      background: rgba(0, 0, 0, 0.3);
       margin-left: 20%;
       margin-top: 3%;
       padding-left: 5%;
     }
+  }
+`;
+export const MainMenu = styled.div`
+  position: absolute;
+  top: 2%;
+  left: 3%;
+  width: 40px;
+  height: 37.5px;
+`;
+export const MainMenuContent = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  label {
+    position: absolute;
+    left: 4%;
+    width: 40px;
+    height: 37.5px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  input {
+    display: none;
+  }
+  @media (min-width: 320px) {
+  }
+`;
+export const HeaderDashBoard = styled.div`
+  background: #bfe6e9;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 320px) {
+    position: absolute;
+    top: 0;
+    height: 10%;
+    width: 100%;
   }
 `;
 export const AddNewTask = styled.form`
@@ -64,6 +102,8 @@ export const AddNewTask = styled.form`
     width: 100%;
     height: 100%;
     font-size: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
   }
   button {
     background: none;
@@ -78,7 +118,7 @@ export const AddNewTask = styled.form`
   @media (min-width: 320px) {
     width: 80%;
     height: 5%;
-    margin: 0 auto;
+    margin: 2% auto;
     padding-left: 0%;
     input {
       font-size: 1.5em;
@@ -92,10 +132,9 @@ export const AddNewTask = styled.form`
 
   @media (min-width: 900px) {
     height: 8%;
-    margin: 0 auto;
+    margin: 3% auto;
     padding-left: 0%;
-    input {
-    }
+
     button {
       top: 2%;
       left: 90%;
@@ -127,7 +166,7 @@ export const AddNewTask = styled.form`
     }
   }
 `;
-export const SideMenu = styled.div`
+export const RightSideMenu = styled.div`
   /*
   * Pensar numa solução para clicar fora do menu e fechá-lo.
    */

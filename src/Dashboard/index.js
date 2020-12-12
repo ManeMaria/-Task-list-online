@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Container, AddNewTask, SideMenu } from './styles';
+import {
+  Container,
+  AddNewTask,
+  RightSideMenu,
+  HeaderDashBoard,
+  MainMenu,
+  MainMenuContent,
+} from './styles';
 import TaskList from '../components/TaskList';
 import { nanoid } from 'nanoid';
 // import Button from '../components/Button/index';
@@ -65,9 +72,20 @@ function Dashboard({ task }) {
 
   return (
     <Container>
-      {/* lembrar de colocar este código no header */}
-      {/* `Você tem ${taskList.length} 
-          ${taskList.length === 1 ? 'tarefa' : 'tarefas'} hoje.`*/}
+      <HeaderDashBoard>
+        <h2>
+          {`Você tem ${taskList.length} 
+        ${taskList.length === 1 ? 'tarefa' : 'tarefas'} hoje.`}
+        </h2>
+      </HeaderDashBoard>
+      <MainMenu>
+        <MainMenuContent>
+          <input type="checkbox" id="menu" />
+          <label htmlFor="menu">
+            <img src="https://img.icons8.com/ios-filled/50/4a90e2/menu--v1.png" />
+          </label>
+        </MainMenuContent>
+      </MainMenu>
 
       <AddNewTask onSubmit={captureNewTask}>
         <input
@@ -82,7 +100,7 @@ function Dashboard({ task }) {
         {/* decidi não deixar como button default, pois seu estilo é único na tela. */}
       </AddNewTask>
 
-      <SideMenu visible={openMenu}>
+      <RightSideMenu visible={openMenu}>
         <button
           className="close-menu"
           type="button"
@@ -99,7 +117,7 @@ function Dashboard({ task }) {
         <span>
           <p>{comments}</p>
         </span>
-      </SideMenu>
+      </RightSideMenu>
 
       <ul>
         {taskList.map((tk) => (

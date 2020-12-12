@@ -64,7 +64,7 @@ export const Content = styled.li`
   height: 100%;
   display: flex;
   align-items: center;
-  background: #d7cece;
+  background: #e8e3e3;
   list-style: none;
   box-shadow: 0px 1px #000;
   @media (min-width: 320px) {
