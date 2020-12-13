@@ -174,7 +174,7 @@ export const MainMenu = styled.div`
      */
     label {
       img {
-        margin-top: 1%;
+        margin-top: 0%;
         width: 40px;
         height: 37.5px;
       }
@@ -189,6 +189,10 @@ export const HeaderDashBoard = styled.div`
   h2 {
     margin: 0 auto;
   }
+  img {
+    width: 52px;
+    margin-right: 2%;
+  }
   @media (min-width: 320px) {
     position: absolute;
     top: 0;
@@ -196,6 +200,10 @@ export const HeaderDashBoard = styled.div`
     width: 100%;
     h2 {
       margin: 0 auto 0 15%;
+    }
+    img {
+      width: 32px;
+      margin-right: 2%;
     }
   }
   @media (min-width: 600px) {

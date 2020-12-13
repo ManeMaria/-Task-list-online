@@ -91,6 +91,11 @@ function Dashboard({ task }) {
           {`Você tem ${taskList.length} 
         ${taskList.length === 1 ? 'tarefa' : 'tarefas'} hoje.`}
         </h2>
+        <img
+          src="https://fontmeme.com/permalink/201213/cf5f7dda05e0ff2b5b62efac13db598f.png"
+          alt="playbook-font"
+          border="0"
+        />
       </HeaderDashBoard>
 
       <AddNewTask onSubmit={captureNewTask}>
