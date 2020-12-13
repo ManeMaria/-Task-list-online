@@ -5,7 +5,6 @@ import {
   RightSideMenu,
   HeaderDashBoard,
   MainMenu,
-  MainMenuContent,
 } from './styles';
 import TaskList from '../components/TaskList';
 import { nanoid } from 'nanoid';
@@ -73,19 +72,26 @@ function Dashboard({ task }) {
   return (
     <Container>
       <HeaderDashBoard>
+        <MainMenu>
+          <input type="checkbox" id="menu" />
+          <label htmlFor="menu">
+            <img src="https://img.icons8.com/ios-filled/50/4a90e2/menu--v1.png" />
+          </label>
+          <div className="sideMainMenu">
+            <label htmlFor="menu">
+              <img src="https://img.icons8.com/ios-filled/50/4a90e2/menu--v1.png" />
+            </label>
+            <div className="ProfileImage">
+              <img src="https://img.icons8.com/dusk/64/4a90e2/user-menu-female.png" />
+              <h3>César Damasceno</h3>
+            </div>
+          </div>
+        </MainMenu>
         <h2>
           {`Você tem ${taskList.length} 
         ${taskList.length === 1 ? 'tarefa' : 'tarefas'} hoje.`}
         </h2>
       </HeaderDashBoard>
-      <MainMenu>
-        <MainMenuContent>
-          <input type="checkbox" id="menu" />
-          <label htmlFor="menu">
-            <img src="https://img.icons8.com/ios-filled/50/4a90e2/menu--v1.png" />
-          </label>
-        </MainMenuContent>
-      </MainMenu>
 
       <AddNewTask onSubmit={captureNewTask}>
         <input

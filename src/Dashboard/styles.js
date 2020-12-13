@@ -13,7 +13,7 @@ export const Container = styled.div`
   ul {
     width: 70%;
     height: 55%;
-    background: rgba(0, 0, 0, 0.5);
+    background: #c4c4c4;
     margin-left: 20%;
     margin-top: 3%;
     padding-left: 5%;
@@ -25,9 +25,9 @@ export const Container = styled.div`
     ul {
       width: 85%;
       height: 60%;
-      background: rgba(0, 0, 0, 0.3);
+      background: #c4c4c4;
       margin-left: 0;
-      margin-top: 10%;
+      margin-top: 3%;
       padding-left: 0;
     }
   }
@@ -35,7 +35,7 @@ export const Container = styled.div`
     ul {
       width: 80%;
       height: 55%;
-      background: rgba(0, 0, 0, 0.3);
+      background: #c4c4c4;
       margin-left: 0%;
       margin-top: 3%;
       padding-left: 0;
@@ -45,49 +45,163 @@ export const Container = styled.div`
     ul {
       width: 70%;
       height: 55%;
-      background: rgba(0, 0, 0, 0.3);
+      background: #c4c4c4;
       margin-left: 20%;
       margin-top: 3%;
       padding-left: 5%;
     }
   }
 `;
+
 export const MainMenu = styled.div`
   position: absolute;
-  top: 2%;
-  left: 3%;
-  width: 40px;
-  height: 37.5px;
-`;
-export const MainMenuContent = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
+  top: 0%;
+  background: none;
+  width: 80%;
+  height: 100vh;
+  margin-left: 2%;
   label {
-    position: absolute;
-    left: 4%;
-    width: 40px;
-    height: 37.5px;
     img {
-      width: 100%;
-      height: 100%;
+      margin-top: 5%;
+      width: 40px;
+      height: 37.5px;
     }
   }
   input {
     display: none;
+    &:checked ~ .sideMainMenu {
+      width: 80%;
+      box-shadow: 0 16px 3px 15px rgba(0, 0, 0, 0.3);
+      > label {
+        display: block;
+      }
+      > div {
+        display: flex;
+        img {
+          display: block;
+        }
+        h3 {
+          display: block;
+        }
+      }
+    }
   }
-  @media (min-width: 320px) {
+  .sideMainMenu {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: -2.5%;
+    width: 0%;
+    height: 100vh;
+    background: #fff;
+    transition: all 0.3s;
+
+    > label {
+      margin-top: 2%;
+      margin-left: 3.3%;
+      display: none;
+    }
+    > div {
+      display: none;
+      width: 100%;
+      height: 20%;
+      background: #bfe6e9;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 25%;
+        left: 2%;
+        display: none;
+        width: 52px;
+        height: 52px;
+        padding: 2%;
+        border-radius: 50%;
+        background: #fff;
+      }
+      > h3 {
+        display: none;
+        margin-left: 27%;
+        margin-top: 18%;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .sideMainMenu {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: -2.5%;
+      width: 27%;
+      height: 100vh;
+      background: #fff;
+      border: none;
+      border-right: solid 0.3px rgba(196, 196, 196, 0.2);
+      box-shadow: none;
+      > label {
+        display: none;
+      }
+      > div {
+        display: flex;
+        width: 100%;
+        height: 20%;
+        background: rgba(196, 196, 196, 0.2);
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+
+        img {
+          display: block;
+          width: 52px;
+          height: 52px;
+          padding: 2%;
+          border-radius: 50%;
+          background: #fff;
+        }
+        > h3 {
+          display: block;
+          margin-left: 27%;
+          margin-top: 18%;
+        }
+      }
+    }
+  }
+  @media (min-width: 600px) {
+    /*não segui o padrão neste, pois o alterava a mairia do dispositivos se deixasse
+      em 320px.
+     */
+    label {
+      img {
+        margin-top: 1%;
+        width: 40px;
+        height: 37.5px;
+      }
+    }
   }
 `;
 export const HeaderDashBoard = styled.div`
   background: #bfe6e9;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  h2 {
+    margin: 0 auto;
+  }
   @media (min-width: 320px) {
     position: absolute;
     top: 0;
     height: 10%;
     width: 100%;
+    h2 {
+      margin: 0 auto 0 15%;
+    }
+  }
+  @media (min-width: 600px) {
+    h2 {
+      margin: 0 auto;
+    }
   }
 `;
 export const AddNewTask = styled.form`
@@ -102,7 +216,7 @@ export const AddNewTask = styled.form`
     width: 100%;
     height: 100%;
     font-size: 20px;
-    background: rgba(0, 0, 0, 0.3);
+    background: #c4c4c4;
     border: none;
   }
   button {
@@ -194,10 +308,6 @@ export const RightSideMenu = styled.div`
       top: 80%;
       left: 2%;
     }
-    @media (min-width: 900px) {
-    }
-    @media (min-width: 1200px) {
-    }
   }
   span {
     display: ${(props) => (props.visible ? 'block' : 'none')};
@@ -219,7 +329,7 @@ export const RightSideMenu = styled.div`
   @media (min-width: 900px) {
     width: ${(props) => (props.visible ? '20%' : '0')};
     box-shadow: ${(props) =>
-      props.visible ? '0 0px 3px 15px rgba(0, 0, 0, 0.3)' : 'none'};
+      props.visible ? '0 0 3px 15px rgba(0, 0, 0, 0.3)' : 'none'};
   }
   @media (min-width: 1200px) {
     width: ${(props) => (props.visible ? '20%' : '0')};
